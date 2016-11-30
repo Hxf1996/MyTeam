@@ -1,0 +1,25 @@
+@mixin gif-init($div-width, $image-width, $image-height, $once-time){
+    width: $div-width+px;
+    height: $image-height+px;
+    background-size: $image-width / $div-width * 100%;
+    animation: image-to-gif steps($image-width / $div-width - 1) $once-time+s infinite both;
+}
+
+@mixin gif($div-width, $image-width, $image-height, $once-time){
+  .gif {
+    display: block;
+    @include gif-init($div-width, $image-width, $image-height, $once-time);
+  }
+  .stop {
+    animation-play-state: paused;
+  }
+
+  @keyframes image-to-gif {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+}

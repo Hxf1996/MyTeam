@@ -1,0 +1,66 @@
+// grid布局
+
+//全局grid的样式设置
+@mixin all-grid-cols($list: "") {
+  	@each $type in $col-type {
+  		@for $i from 1 through $col-number {
+    		$list: ".col-#{$type}-#{$i},#{$list}";
+  		}
+  	}
+  	#{$list} {
+	    position: relative;
+	    min-height: 1px;
+  	}
+}
+
+//单行grid的样式设置
+@mixin all-grid-col($type, $list: "") {
+	@for $i from 1 through $col-number {
+		$list: ".col-#{$type}-#{$i},#{$list}";
+	}
+	#{$list} {
+	    float: left;
+  	}
+}
+
+//单个gird设置
+@mixin make-grid-cols($type){
+	@include all-grid-col($type);
+  	@for $i from 1 through $col-number {
+		.col-#{$type}-#{$i} {
+			width: 100% / $col-number * $i;
+		}
+        .col-#{$type}-offset-#{$i} {
+            margin-left: 100% / $col-number * $i;
+        }
+	}
+}
+
+@mixin is-gird-type($type){
+  	@if $type == xs {
+    	@include make-grid-cols($type);
+  	}@else if $type == sm {
+    	@media (min-width: $sm-width) {
+      		@include make-grid-cols($type);
+    	}
+  	}@else if $type == md {
+    	@media (min-width: $md-width) {
+      		@include make-grid-cols($type);
+    	}
+  	}@else{
+    	@media (min-width: $lg-width) {
+      		@include make-grid-cols($type);
+    	}
+  	}
+}
+
+@mixin grid-cols(){
+	@each $type in $col-type{
+		@include is-gird-type($type);
+	}
+}
+
+@mixin make-gird() {
+	@include all-grid-cols();
+	@include grid-cols();
+}

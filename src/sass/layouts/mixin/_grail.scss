@@ -1,0 +1,25 @@
+@mixin all-grid-cols($grail-left-width, $grail-right-width)
+{
+    .grail
+    {
+        display: flex;
+
+        width: 100%;
+
+        flex-flow: space-between;
+        align-items: stretch;
+        @include clearfix();
+        .grail-left
+        {
+            width: $grail-left-width;
+        }
+        .grail-body
+        {
+            flex-grow: 1;
+        }
+        .grail-right
+        {
+            width: $grail-right-width;
+        }
+    }
+}

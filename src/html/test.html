@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+	  <h1>Hello App!</h1>
+	  <p>
+	    <a v-link="{ name: 'username',params: { username: '123' } }">Go to Foo</a>
+	    <a v-link="{ path: '/bar' }">Go to Bar</a>
+	  </p>
+	  <router-view></router-view>
+	</div>
+</body>
+</html>
