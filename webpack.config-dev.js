@@ -1,11 +1,12 @@
 import webpack from "webpack";
 
-import entryConfig from "./webpack-config/entry.config";
+import entryConfig from "./webpack-config/entry.config-dev";
 import outputConfig from "./webpack-config/output.config";
 import loadersConfig from "./webpack-config/loaders.config";
-import pluginsConfig from "./webpack-config/plugins.config";
+import pluginsConfig from "./webpack-config/plugins.config-dev";
 
 const webpackConfig = {
+	devtool: "eval-source-map",
     entry: entryConfig,
     output: outputConfig,
     module: {
