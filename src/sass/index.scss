@@ -1,0 +1,203 @@
+.top-banner {
+	position: fixed;
+
+	overflow: hidden;
+
+	width: 100%;
+	height: 100vh;
+
+	resize: both;
+
+	background-color: #07080b;
+	.top-banner-txt {
+		font-size: .6rem;
+
+		position: absolute;
+		top: 40%;
+		left: 50%;
+
+		width: 6rem;
+		height: 3rem;
+		margin: -1.5rem 0 0 -3rem;
+
+		user-select: none;
+		text-align: center;
+	}
+	.top-banner-join {
+		font-size: .4rem;
+		line-height: 1.55rem;
+
+		display: inline-block;
+
+		width: 1.6rem;
+		height: 1.6rem;
+
+		transition: all .5s ease-in-out;
+		text-align: center;
+
+		border-radius: 50%;
+		background-color: #4292ff;
+		&:hover {
+			cursor: pointer;
+
+			background-color: #256dcf;
+		}
+		&:active {
+			width: 2rem;
+			height: 1.1rem;
+
+			color: transparent;
+			border-radius: 20% 50% 20% / 50%;
+		}
+	}
+	& > img {
+		transition: filter 1s ease-in-out;
+
+		filter: blur(10px);
+	}
+}
+
+.fit-cover {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+}
+
+.screen-space {
+	height: 100vh;
+}
+.in-screen {
+	font-size: 0;
+
+	position: relative;
+
+	overflow: hidden;
+
+	user-select: none;
+	& > div {
+		position: relative;
+
+		width: 100vw;
+	}
+	.one-screen {
+		.one-screen-txt {
+			position: absolute;
+			top: 20%;
+			right: 5%;
+
+			transition: font-size 1s ease;
+
+			color: #999999;
+			&:first-line {
+				font-size: 1.4em;
+				line-height: 1.5em;
+
+				color: #636363;
+			}
+		}
+	}
+	
+	.two-screen {
+		overflow: hidden;
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+			background-color: rgba(62, 60, 60, 0.22);
+		}
+		video {
+			width: 100%;
+			height: 100%;
+			margin: {
+				top: -16.3%;
+				bottom: -16.3%;
+			}
+		}
+		span {
+			position: absolute;
+			width: 0px;
+			overflow: hidden;
+			font-size: 0.5rem;
+			left:60%;
+			top: 20%;
+			transition: width 5s ease;
+			white-space:nowrap;
+		}
+	}
+	.three-screen {
+		background-color: #999999;
+		img {
+			opacity: .85;
+		}
+		.three-screen-txt {
+			font-size: .7rem;
+
+			position: absolute;
+			top: 30%;
+			left: 50%;
+
+			width: 10rem;
+			height: 1rem;
+			margin: -0.5rem 0 0 -5rem;
+
+			transition: opacity 1s ease;
+			text-align: center;
+
+			opacity: 0;
+			color: #bfbfbf;
+			text-shadow: 1px 1px 0 #696969,2px 2px 0 #696969;
+		}
+		.focus-team {
+			position: absolute;
+			top: 50%;
+			left: 25%;
+
+			display: flex;
+
+			width: 50%;
+
+			justify-content: space-between;
+			.one-team {
+				width: 18%;
+
+				transition: box-shadow .5s ease .5s;
+
+				border-radius: 50%;
+				overflow: hidden;
+				z-index: 2;
+				img {
+					width: 100%;
+					height: auto;
+
+					transition: transform 1s ease;
+					transform: scale(0);
+				}
+				&:hover {
+					box-shadow: 0 0 20px #3e2d2d;
+					img {
+						transform: rotateY(180deg);
+					}
+				}
+			}
+		}
+	}
+	.active {
+		.one-screen-txt {
+			font-size: .3rem;
+		}
+		span {
+			width: 6rem;
+		}
+		.three-screen-txt {
+			opacity: 1;
+		}
+		.focus-team .one-team img {
+			transform: scale(1);
+		}
+	}
+}

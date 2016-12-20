@@ -6,7 +6,7 @@ import loadersConfig from "./webpack-config/loaders.config";
 import pluginsConfig from "./webpack-config/plugins.config-dev";
 
 const webpackConfig = {
-	devtool: "eval-source-map",
+	devtool: "sourcemap",
     entry: entryConfig,
     output: outputConfig,
     module: {

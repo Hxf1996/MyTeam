@@ -1,0 +1,15 @@
+.transition {
+	transition: all .5s ease;
+}
+
+.fade- {
+	// 基于元素中心的缩放
+	&scale- {
+		&transition {
+			transform: scale(1);
+		}
+		&enter, &leave{
+			transform: scale(0);
+		}
+	}
+}

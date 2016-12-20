@@ -1,0 +1,90 @@
+$blue: #2DC2E0;
+$brown: #884E2C;
+$gray: #EAEFDD;
+$red: #CD5B4D;
+$white: #FFF;
+$yellow: #FFDF50;
+$yellow-dark: #F1AD41;
+
+.egg {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 250px;
+  background: $white;
+  border-top-left-radius: 50% 60%;
+  border-top-right-radius: 50% 60%;
+  border-bottom-left-radius: 50% 40%;
+  border-bottom-right-radius: 50% 40%;
+  box-shadow: inset -10px -5px $gray;
+  animation: wobble 2s linear infinite;
+  transform-origin: 0 50%;
+  .yolk {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 130px;
+    height: 130px;
+    background: $yellow;
+    border-radius: 100%;
+    box-shadow: inset -5px -5px $yellow-dark;
+    .face {
+      .eyes {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        display: flex;
+        &:before, &:after {
+          display: block;
+          content: '';
+          width: 12px;
+          height: 12px;
+          background: $brown;
+          border-radius: 100%;
+          margin: 0 30px;
+        }
+      }
+      .mouth {
+        position: absolute;
+        top: 65px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 40px;
+        height: 20px;
+        background: $brown;
+        border-radius: 15px 15px 70px 70px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        &:after {
+          display: block;
+          content: '';
+          width: 20px;
+          height: 8px;
+          background: $red;
+          border-radius: 5px 5px 100% 100%;
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
+  25% {
+    transform: rotate(15deg) translate(-50%, -50%);
+  }
+  75% {
+    transform: rotate(-15deg) translate(-50%, -50%);
+  }
+  100% { 
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
+}

@@ -17,7 +17,6 @@ gulp.task("webpack:build", function(callback) {
 
 gulp.task("webpack:build-dev", function(callback) {
     let devBuildConfig = Object.create(webpackConfigDev);
-    devBuildConfig.devtool = "sourcemap";
     devBuildConfig.debug = true;
     webpack(devBuildConfig, function(err, stats) {
         callback();

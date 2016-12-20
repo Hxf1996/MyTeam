@@ -1,24 +1,12 @@
 // gird布局参数
-// $col-number: 12; // 行数
-// $col-type: xs, sm, md, lg;  // 分类
+$col-number: 12; // 行数
+$col-type: xs, sm, md, lg;  // 分类
 // 除去最小分辨率，其余每个需要设置宽度
-// $sm-width: 768px;
-// $md-width: 992px;
-// $lg-width: 1170px;
+$sm-width: 768px;
+$md-width: 992px;
+$lg-width: 1170px;
 
-// grail圣杯布局参数
-// $grail-left-width: 300px;
-// $grail-right-width: 300px;
-
-// image转gif
-$div-width: 100;
-$image-width: 2900;
-$image-height: 100;
-$once-time: .8;
-
-// @import './mixin/_grid.scss';
-// @import './mixin/_grail.scss';
-@import './mixin/_imageLikeGif.scss';
+@import './mixin/_grid.scss';
 @import './mixin/_clear.scss';
 
 .row {
@@ -27,10 +15,4 @@ $once-time: .8;
 }
 
 // 生成gird布局
-// @include make-gird();
-
-// 生成grail布局
-// @include all-grid-cols($grail-left-width, $grail-right-width);
-
-// image转gif
-@include gif($div-width, $image-width, $image-height, $once-time);
+@include make-gird();

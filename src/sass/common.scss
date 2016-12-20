@@ -1,0 +1,57 @@
+@font-face {
+  font-family: BASE;
+  src: local("Tahoma"),
+  	   local("Arial"),
+  	   local("Hiragino Sans GB"),
+  	   local("Microsoft YaHei"),
+       local("WenQuanYi Micro Hei");
+}
+
+html {
+	font-family: BASE, sans-serif;
+    letter-spacing: 2px;
+    -webkit-font-smoothing: antialiased;
+    font-size: calc( 550% + (100vw - 600px)/6);
+}
+
+@media screen and (min-width: 1000px){
+	html {
+		font-size: calc( 625% + 5 * (100vw - 1920px)/96);
+	}
+}
+
+body {
+    color: #fff;
+    cursor: default;
+}
+a {
+	text-decoration:none;
+	color: inherit;
+}
+
+.load {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: #ccc;
+	z-index: 1;
+	@import './layouts/load-egg.scss';
+	h6 {
+		position: absolute;
+		left: 50%;
+		top: 67%;
+		font-size: 0.4rem;
+		width: 8rem;
+		height: 1rem;
+		margin: -0.5rem 0 0 -4rem;
+		text-align: center;
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+@import './animate.scss';
