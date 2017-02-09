@@ -3,7 +3,6 @@ import './images/top-banner.jpg';
 import './images/top-banner-sm.jpg';
 import './images/one-screen.jpg';
 import './images/three-screen.jpg';
-import './images/team.png';
 import './images/logo1.jpg';
 import './images/logo2.png';
 import './images/logo3.jpg';

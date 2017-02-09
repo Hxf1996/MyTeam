@@ -14,10 +14,13 @@ const pluginsConfig = [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
         name: ["common","vue"],
-        minChunks: 2
+        minChunks: 4
     }),
     new webpack.ProvidePlugin({
-        Vue: "vue"
+        Vue: "vue",
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery"
     }),
     new ExtractTextPlugin("[name].css")
 ];

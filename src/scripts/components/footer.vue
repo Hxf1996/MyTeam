@@ -53,15 +53,23 @@
 
 <style lang='sass'>
 	footer {
+		clear: both;
 		position: relative;
-
 		width: 100%;
-
-		background-color: #333333;
+		background-color: rgb(44, 43, 43);
+		@media screen and (min-width: 1000px){
+			& {
+				font-size: calc( 625% + 5 * (100vw - 1920px)/96);
+			}
+		}
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
 		.footer-wrap {
 			display: flex;
 			justify-content: center;
-			padding-top: 0.2rem;
+			padding-top: 20px;
 
 			a {
 				height: 32px;
@@ -96,15 +104,15 @@
 			}
 		}
 		.footer-link, .footer-copy {
-			font-size: 0.1rem;
+			font-size: 16px;
 			max-width: 1200px;
 			margin: {
 				left: auto;
 				right: auto;
 			};
 			padding: {
-				top: 0.2rem;
-				bottom: 0.2rem;
+				top: 20px;
+				bottom: 20px;
 			}
 		}
 		.footer-link {
@@ -112,7 +120,7 @@
 			justify-content: center;
 			border-bottom: 1px solid #d0d6d9;
 			span {
-				padding: 0 0.1rem;
+				padding: 0 16px;
 				&:hover {
 					color: #ff9595;
 					text-decoration:underline;

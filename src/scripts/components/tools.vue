@@ -1,25 +1,45 @@
 <template>
 	<div class="tools" :class="{'active': active}" @click="use" @mouseleave="unuse(true)" @mouseenter="unuse(false)">
-		<i class="fa fa-user-o" aria-hidden="true"></i>
-		<div class="tool" @click.stop="toggleBox('login')">
-			<i class="fa fa-sign-in" aria-hidden="true"></i>
+		<div v-if="login">
+			<img :src="face" alt="">
+			<div class="tool" @click.stop="zone">
+				<i class="fa fa-connectdevelop" aria-hidden="true"></i>
+			</div>
+			<div class="tool" @click.stop="unlogin">
+				<i class="fa fa-sign-out" aria-hidden="true"></i>
+			</div>
 		</div>
-		<div class="tool" @click.stop="toggleBox('register')">
-			<i class="fa fa-user-plus" aria-hidden="true"></i>
+		<div v-else>
+			<i class="fa fa-user-o" aria-hidden="true"></i>
+			<div class="tool" @click.stop="toggleBox('login')">
+				<i class="fa fa-sign-in" aria-hidden="true"></i>
+			</div>
+			<div class="tool" @click.stop="toggleBox('register')">
+				<i class="fa fa-user-plus" aria-hidden="true"></i>
+			</div>
 		</div>
 	</div>
 	<div id="shade-box" class="shade-box" v-show="showShade" @click="toggleBox" @mousewheel.prevent @DOMMouseScroll.prevent>
-		<component class="transition" :is="toolboxs" @click.stop keep-live></component>
+		<component class="transition" :is="toolboxs" @click.stop @login="toLoginStatu" @toggle="toggleBox" keep-live></component>
 	</div>
 </template>
 
 <script>
 	export default {
+		compiled: function(){
+			if(window.sessionStorage.user != undefined && window.sessionStorage.user != ""){
+				this.toLoginStatu(JSON.parse(window.sessionStorage.user));
+			}
+		},
 		data: function(){
 			return {
 				active: false,
 				showShade: false,
-				toolboxs: ''
+				toolboxs: '',
+				login: false,
+				user: {
+					photo: ""
+				}
 			};
 		},
 		components: {
@@ -31,11 +51,15 @@
 			}
 		},
 		methods: {
-			use: function(){
+			toLoginStatu: function (userS){
+	   			this.login = true;
+	   			this.user = userS;
+			},
+			use: function (){
 				this.active = true;
 				this.toolboxs = '';
 			},
-			unuse: function(isCreate){
+			unuse: function (isCreate){
 				let _self = this;
 				var obj = function(){
 					_self.active = false;
@@ -47,10 +71,25 @@
 					},3000);
 				}
 			},
-			toggleBox: function(type){
+			toggleBox: function (type){
 				this.active = false;
 				this.showShade = !this.showShade;
 				this.toolboxs = 'user-'+type;
+			},
+			unlogin: function(){
+				window.sessionStorage.user = "";
+				this.user = {};
+				this.login = false;
+				this.$dispatch('unlogin', '');
+			},
+			zone: function(){
+				this.$dispatch('zone', '');
+			}
+		},
+		computed: {
+			face: function(){
+				let photo = Window.config.BASEURL + this.user.photo;
+				return photo;
 			}
 		}
 	}
@@ -71,12 +110,17 @@
 		font-size: 50px;
 		transition: all .5s ease;
 		cursor: pointer;
+		z-index: 999;
 
 		&:hover {
 			opacity: 1;
 			box-shadow: 0 0 10px #1f1d1d;
 		}
-
+		& > div > img {
+			width: 100%;
+			height: auto;
+			border-radius: 50%;
+		}
 		.tool {
 			width: 60px;
 			height: 60px;
@@ -138,6 +182,7 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
-		z-index: 9;
+		z-index: 999;
+		background-color: rgba(0, 0, 0, 0.6);
 	}
 </style>

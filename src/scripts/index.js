@@ -1,9 +1,20 @@
-import VueRouter from 'vue-router';
+// 引入组件
 import tools from './components/tools.vue';
 import footer from './components/footer.vue';
 
+// 引入js文件
+import VueResource from 'vue-resource';
+// 配置文件
+import config from './config.js';
+Vue.use(VueResource);
+
+// 配置
+Window.config = config;
+Vue.http.options.emulateHTTP = true;
+Vue.http.options.emulateJSON = true;
+
 let app = new Vue({
-	el: 'body', 
+	el: 'body',
 	data: {
 		showLoad: true,
 		opacity: 1,
@@ -41,6 +52,9 @@ let app = new Vue({
 		'my-footer': footer
 	},
 	methods: {
+		join: function(){
+			window.location.href = '/welcome.html';
+		},
 		toClear: function(){
 			this.filter = 0;
 		},
@@ -65,10 +79,4 @@ let app = new Vue({
 			this.focus[num] = true;
 		}
 	}
-});
-Vue.use(VueRouter);
-
-window.router = new VueRouter({
-    history: true,
-    abstract: true
 });

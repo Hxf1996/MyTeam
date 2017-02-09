@@ -24,7 +24,7 @@ gulp.task("webpack:build-dev", function(callback) {
 });
 
 gulp.task("clean", function() {
-    return gulp.src("./dist/*", {read: false})
+    return gulp.src(["./dist/*","!./dist/sftp-config.json"], {read: false})
         .pipe(clean());
 });
 

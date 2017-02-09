@@ -23,7 +23,10 @@ const pluginsConfig = [
         minChunks: 2
     }),
     new webpack.ProvidePlugin({
-        Vue: "vue"
+        Vue: "vue",
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery"
     }),
     new ExtractTextPlugin("[name].css")
 ];

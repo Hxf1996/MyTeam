@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title></title>
+	<title>万社--开启梦想中大学</title>
 </head>
-<body @mousewheel="mouseWheel" @DOMMouseScroll="mouseWheel"> 
+<body @mousewheel="mouseWheel" @DOMMouseScroll="mouseWheel">
 	<div class="load" v-bind:class="{'hidden': !show}" id="load">
 		<div class="egg">
 			<div class="yolk">
@@ -22,7 +22,7 @@
 		<div class="top-banner-txt" :style="{opacity: opacity}">
 			JION US<br/>A WONDERFUL LIFE
 			<h6>万社，开启梦想中大学</h6>
-			<span class="top-banner-join" @mouseOver="toClear" @MouseOut="toDark">加&ensp;入</span>
+			<span class="top-banner-join" @mouseOver="toClear" @MouseOut="toDark" @click="join">加&ensp;入</span>
 		</div>
 	</div>
 	<div class="screen-space"></div>

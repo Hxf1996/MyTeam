@@ -13,7 +13,11 @@ const webpackConfig = {
         loaders: loadersConfig
     },
     resolve: {
-        extensions: ["", ".js", ".entry.js", ".resource.js", ".html", ".scss", ".css", ".vue"]
+        extensions: ["", ".js", ".entry.js", ".resource.js", ".html", ".scss", ".css", ".vue"],
+        alias: {
+            $: "jquery",
+            jQuery: "jquery"
+        }
     },
     plugins: pluginsConfig
 };

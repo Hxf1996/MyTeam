@@ -1,0 +1,1 @@
+// import './images/one-screen.jpg';
